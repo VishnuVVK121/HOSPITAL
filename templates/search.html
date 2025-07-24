@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <form method="POST" class="card card-body shadow-sm mb-4">
+    <h4 class="mb-3">Search Patient</h4>
+    <input name="id" class="form-control mb-3" placeholder="Enter Patient ID">
+    <button class="btn btn-primary">Search</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back</a>
+  </form>
+
+  {% if patient %}
+    <div class="card p-3 shadow-sm">
+      <h5>Patient Found:</h5>
+      <ul>
+        <li><strong>ID:</strong> {{ patient[0] }}</li>
+        <li><strong>Name:</strong> {{ patient[1] }}</li>
+        <li><strong>Age:</strong> {{ patient[2] }}</li>
+        <li><strong>Gender:</strong> {{ patient[3] }}</li>
+        <li><strong>Illness:</strong> {{ patient[4] }}</li>
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

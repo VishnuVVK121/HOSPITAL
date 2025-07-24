@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <div class="mb-3">
+    <a href="{{ url_for('add_patient') }}" class="btn btn-success">Add Patient</a>
+    <a href="{{ url_for('search_patient') }}" class="btn btn-primary">Search Patient</a>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Illness</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in patients %}
+      <tr>
+        <td>{{ p[0] }}</td><td>{{ p[1] }}</td><td>{{ p[2] }}</td><td>{{ p[3] }}</td><td>{{ p[4] }}</td>
+        <td><a href="{{ url_for('discharge_patient', pid=p[0]) }}" class="btn btn-danger btn-sm">Discharge</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
